@@ -1,5 +1,5 @@
 BIN := iris
-INCLUDE_DIR := ./includes/
+INCLUDE_DIR := ./Includes/
 LIB_DIR :=
 LIBS :=
 AST_DIR := ./AST/

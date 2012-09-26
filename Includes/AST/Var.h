@@ -9,30 +9,32 @@ namespace Iris
 		public:
 			Var(Iris::Name n):
 			{
-				c.Variable.child[NAME] = &n;
-				c.Variable.child[EXPR] = NULL;
+				child[NAME] = &n;
+				child[EXPR] = NULL;
 			}
 			Var(Iris::Name n, Iris::Expression e):
 			{
-				c.Variable.child[NAME] = &n;
-				c.Variable.child[EXPR] = &e;
+				child[NAME] = &n;
+				child[EXPR] = &e;
 			}
 			Var(Iris::Var v, Iris::Literal l)
 			{
-				c.Variable.child[NAME] = &v.name(); //Might need to malloc this?
-				c.Variable.childSeq.push_back(l);
+				child[NAME] = &v.name(); //Might need to malloc this?
+				childSeq.push_back(l);
 			}
 			Var(Var v, Expression e)
 			{
-				c.Variable.child[NAME] = &v.name();
-				c.Variable.child[EXPR] = &e;
-				for(i=0; i < v.c.Variable.childSeq.size(); ++i)
-					c.Variable.childSeq.push_back(v.c.Variable.childSeq[i]);
+				child[NAME] = &v.name();
+				child[EXPR] = &e;
+				childSeq(v.c.Variable.childSeq);
+				//for(i=0; i < v.c.Variable.childSeq.size(); ++i)
+					//c.Variable.childSeq.push_back(v.c.Variable.childSeq[i]);
 			}
-			Iris::Name name(){return (Iris::Name)(c.Variable.child[NAME]);}
-			std::vector<AST> sizes(){return c.Variable.childSeq;} //Do I need to cast this?
+			Iris::Name name(){return (Iris::Name)(child[NAME]);}
+			std::vector<AST> sizes(){return childSeq;} //Do I need to cast this?
 
 			VarDecl myDec;
+			AST child[2]
 	};
 }
 #undef NAME

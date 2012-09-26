@@ -33,20 +33,12 @@ namespace Iris
 			} 
 			virtual std::string toString(){ return ""; }
 			std::string getName();
-			void visit(Visitor, Traverse);//Traverse might need to be created
+			void visit(Visitor, Traverse);
 			void visitChilds(Visitor, Traverse);
 
 			std::string fName;
 			Int32 line, cBegin, nChild;//nChild might not be needed.
-			union
-			{
-				std::vector<Iris::AST> child;
-				struct Variable
-				{
-					AST *child[2];
-					std::vector<Iris::AST> childSeq;
-				};
-			}c;
+			std::vector<Iris::AST> childSeq;
 			AST *parent;
 		protected:
 			void tab(Int32);

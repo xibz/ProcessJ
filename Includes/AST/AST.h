@@ -38,7 +38,15 @@ namespace Iris
 
 			std::string fName;
 			Int32 line, cBegin, nChild;//nChild might not be needed.
-			std::vector<Iris::AST> child;
+			union
+			{
+				std::vector<Iris::AST> child;
+				struct Variable
+				{
+					AST *child[2];
+					std::vector<Iris::AST> childSeq;
+				};
+			}c;
 			AST *parent;
 		protected:
 			void tab(Int32);

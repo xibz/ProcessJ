@@ -4,7 +4,7 @@
 #define EXPR 1
 namespace Iris
 {
-	class Var:public ASt
+	class Var:public AST
 	{
 		public:
 			Var(Iris::Name n):

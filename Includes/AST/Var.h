@@ -8,13 +8,11 @@ namespace Iris
 	{
 		public:
 			Var(Iris::Name n):
-				myDec(NULL)
 			{
 				c.Variable.child[NAME] = &n;
 				c.Variable.child[EXPR] = NULL;
 			}
 			Var(Iris::Name n, Iris::Expression e):
-				myDec(NULL)
 			{
 				c.Variable.child[NAME] = &n;
 				c.Variable.child[EXPR] = &e;

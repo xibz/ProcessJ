@@ -1,7 +1,9 @@
 //We need to include visitors and error.
+#ifndef _AST_H
+#define _AST_H
 namespace Iris
 {
-	class AST
+	class AST:public Object
 	{
 		public:
 			AST():
@@ -33,13 +35,15 @@ namespace Iris
 			std::string getName();
 			void visit(Visitor, Traverse);//Traverse might need to be created
 			void visitChilds(Visitor, Traverse);
-		protected:
+
 			std::string fName;
-			Int32 line, cBegin, nChild;
+			Int32 line, cBegin, nChild;//nChild might not be needed.
 			std::vector<Iris::AST> child;
 			AST *parent;
+		protected:
 			void tab(Int32);
 			std::string intToString(Int32, Int32);
 
 	};
 }
+#endif
